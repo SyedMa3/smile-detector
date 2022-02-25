@@ -1,5 +1,3 @@
-from matplotlib.pyplot import axis
-from more_itertools import padded
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import BatchNormalization
 from tensorflow.keras.layers import Conv2D
