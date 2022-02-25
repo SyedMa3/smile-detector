@@ -1,11 +1,11 @@
-from tensorflow.keras.preprocessing import img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import numpy as np
 import cv2
 import imutils
 
 face_detector = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
-model = load_model('./')
+model = load_model('model/output.h5')
 
 camera = cv2.VideoCapture(0)
 
@@ -35,13 +35,10 @@ while True:
         cv2.rectangle(frame_copy, (fX, fY), (fX + fW, fY + fH),
             (0, 0, 255), 2)
 
-	# show our detected faces along with smiling/not smiling labels
         cv2.imshow("Face", frame_copy)
 
-        # if the 'q' key is pressed, stop the loop
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-# cleanup the camera and close any open windows
 camera.release()
 cv2.destroyAllWindows()
